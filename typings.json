@@ -2,7 +2,7 @@
   "name": "hamjest",
   "main": "index.d.ts",
   "homepage": "https://github.com/rluba/hamjest",
-  "version": "",
+  "version": "3.0.0-6",
   "devDependencies": {
     "blue-tape": "registry:npm/blue-tape#0.1.0+20160322235613"
   },
