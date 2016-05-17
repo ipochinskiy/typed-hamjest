@@ -4,9 +4,9 @@
   "homepage": "https://github.com/rluba/hamjest",
   "version": "3.0.0-6",
   "devDependencies": {
-    "blue-tape": "registry:npm/blue-tape#0.1.0+20160322235613"
   },
   "ambientDevDependencies": {
+    "mocha": "registry:dt/mocha#2.2.5+20160317120654",
     "node": "registry:dt/node#4.0.0+20160319033040"
   }
 }
