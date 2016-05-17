@@ -1,6 +1,8 @@
 describe('hamjest', () => {
-	it('should be globally preset', () => {
+	it('should able to import by require', () => {
 		let __ = require('hamjest');
+
+		__.assertThat(typeof __, __.is('object'));
 	});
 
 	describe('assertThat', () => {
