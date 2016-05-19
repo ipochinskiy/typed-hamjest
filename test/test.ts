@@ -1,4 +1,4 @@
-const assert = require('assert');
+import * as assert from 'assert';
 import { assertThat, is } from 'hamjest';
 import * as __ from 'hamjest';
 
