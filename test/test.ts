@@ -1,19 +1,84 @@
-describe('hamjest', () => {
-    it('should able to import by require', () => {
-        let __ = require('hamjest');
+const assert = require('assert');
+import { assertThat, is } from 'hamjest';
+import * as __ from 'hamjest';
 
-        __.assertThat(typeof __, __.is('object'));
+describe('hamjest', () => {
+    describe('with star import', () => {
+        it('should be defined', () => {
+
+            assert(__ !== undefined, 'hamjest double underscore should be defined');
+        });
+
+        it('should has assertThat function', () => {
+
+            assert.equal(typeof __.assertThat, 'function', 'hamjest assertThat should be a function');
+        });
+
+        it('should has is function', () => {
+
+            assert.equal(typeof __.is, 'function', 'hamjest is should be a function');
+        });
+
+        it('should be useable for possitive assertions', function () {
+
+            assert.doesNotThrow(
+                () => {
+                    __.assertThat(true, __.is(true));
+                },
+                'AssertionError'
+            );
+        });
+
+        it('should be useable for negative assertions', function()  {
+
+            assert.throws(
+                () => {
+                    __.assertThat(true, __.is(false));
+                },
+                'AssertionError'
+            );
+        });
     });
 
-    describe('assertThat', () => {
-        let __: any;
+    describe('with require import', () => {
+        var required__: any;
         before(() => {
-            __ = require('hamjest');
+            required__ = require('hamjest');
         });
 
         it('should be defined', () => {
 
-            __.assertThat(__.assertThat, __.defined());
+            assert(required__ !== undefined, 'hamjest double underscore should be defined');
+        });
+
+        it('should has assertThat function', () => {
+
+            assert.equal(typeof required__.assertThat, 'function', 'hamjest assertThat should be a function');
+        });
+
+        it('should has is function', () => {
+
+            assert.equal(typeof required__.is, 'function', 'hamjest is should be a function');
+        });
+
+        it('should be useable for possitive assertions', function()  {
+
+            assert.doesNotThrow(
+                () => {
+                    required__.assertThat(true, required__.is(true));
+                },
+                'AssertionError'
+            );
+        });
+
+        it('should be useable for negative assertions', function() {
+
+            assert.throws(
+                () => {
+                    required__.assertThat(true, required__.is(false));
+                },
+                'AssertionError'
+            );
         });
     });
 });
