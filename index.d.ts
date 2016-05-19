@@ -1,4 +1,4 @@
-declare namespace hamjest {
+declare module hamjest {
 
     // asserts
     export interface Promise {
@@ -109,3 +109,4 @@ declare namespace hamjest {
     export function acceptingMatcher(innerFunction: any): any;
     export function describe(matcher: Matcher): Description;
 }
+export = hamjest;
