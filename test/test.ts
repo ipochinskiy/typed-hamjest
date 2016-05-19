@@ -40,8 +40,41 @@ describe('hamjest', () => {
         });
     });
 
+    describe('with direct import', () => {
+
+        it('should has assertThat function', () => {
+
+            assert.equal(typeof assertThat, 'function', 'hamjest assertThat should be a function');
+        });
+
+        it('should has is function', () => {
+
+            assert.equal(typeof is, 'function', 'hamjest is should be a function');
+        });
+
+        it('should be useable for possitive assertions', function()  {
+
+            assert.doesNotThrow(
+                () => {
+                    assertThat(true, is(true));
+                },
+                'AssertionError'
+            );
+        });
+
+        it('should be useable for negative assertions', function() {
+
+            assert.throws(
+                () => {
+                    assertThat(true, is(false));
+                },
+                'AssertionError'
+            );
+        });
+    });
+
     describe('with require import', () => {
-        var required__: any;
+        let required__: any;
         before(() => {
             required__ = require('hamjest');
         });
