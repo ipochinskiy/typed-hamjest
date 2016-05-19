@@ -1,4 +1,4 @@
-declare module hamjest {
+declare namespace hamjest {
 
     // asserts
     export function assertThat(value: any, matcher: Matcher): void;
