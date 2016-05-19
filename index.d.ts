@@ -11,10 +11,9 @@ declare module hamjest {
 
     export function anything(): Matcher;
     export function strictlyEqualTo(operand: any): Matcher;
-    // TODO returns more than a normal matcher
-    export function is(innerMatcher: Matcher): Matcher;
-    export function not(innerMatcher: Matcher): Matcher;
-    export function equalTo(operand: any): Matcher;
+    export function is(innerMatcher: Matcher | any): Matcher;
+    export function not(innerMatcher: Matcher | any): Matcher;
+    export function equalTo(operand: Matcher | any): Matcher;
     export function truthy(): Matcher;
     export function falsy(): Matcher;
     export function falsey(): Matcher;
@@ -103,8 +102,7 @@ declare module hamjest {
         indented(describingfn: any): any;
         appendDescriptionOf(selfDescribing: any): Description;
         appendValue(value: any): Description;
-        // TODO is this really an array?
-        appendNonJson(value: Array<any>): Description;
+        appendNonJson(value: {}): Description;
         appendList(start: string, separator: string, end: string, list: Array<any>): void;
         get(): string;
     }
