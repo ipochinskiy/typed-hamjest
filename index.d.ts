@@ -1,28 +1,11 @@
 declare module hamjest {
 
     // asserts
-    export interface Promise {
-        then(successCallback: any, errorCallback?: any): Promise;
-        catch(errorCallback: any): Promise;
-        finally(finalCallback: any): Promise;
-    }
     export function assertThat(value: any, matcher: Matcher): void;
     export function promiseThat(value: any, matcher: Matcher): Promise;
     export function fail(value: any): void;
 
     // matcher
-    export interface Matcher {
-        matches(): boolean;
-        describeTo(description: Description): void;
-        // TODO is this a string return?
-        describeMismatch(value: any, description: Description): string;
-        isMatcher(matcherOrValue: any): boolean;
-    }
-    export interface TypeSafeMatcher extends Matcher {
-        isExpectedType(): boolean;
-        matchesSafely(): boolean;
-        describeMismatchSafely(actual: any, description: Description): void;
-    }
     export function FeatureMatcher(valueOrMatcher: any, featureDescription: string,
         featureName: string, featureFunction: any): Matcher;
 
@@ -90,6 +73,28 @@ declare module hamjest {
     export function promiseAllOf(...matchers: Array<Matcher>): Matcher;
 
     // utils
+    export function isMatcher(value: any): boolean;
+    export function asMatcher(value: any): Matcher;
+    export function acceptingMatcher(innerFunction: Function): Matcher;
+    export function describe(matcher: Matcher): Description;
+
+
+    export interface Promise {
+        then(successCallback: any, errorCallback?: any): Promise;
+        catch(errorCallback: any): Promise;
+        finally(finalCallback: any): Promise;
+    }
+    export interface Matcher {
+        matches(): boolean | Promise;
+        describeTo(description: Description): void;
+        describeMismatch(value: any, description: Description): void | Promise;
+        isMatcher(matcherOrValue: any): boolean;
+    }
+    export interface TypeSafeMatcher extends Matcher {
+        isExpectedType(): boolean;
+        matchesSafely(): boolean;
+        describeMismatchSafely(actual: any, description: Description): void;
+    }
     export interface Description {
         // TODO compiler failed with these attributes
         // useJsonForObjects: boolean;
@@ -103,10 +108,5 @@ declare module hamjest {
         appendList(start: string, separator: string, end: string, list: Array<any>): void;
         get(): string;
     }
-    export function isMatcher(value: any): boolean;
-    export function asMatcher(value: any): Matcher;
-    // TODO understand this
-    export function acceptingMatcher(innerFunction: any): any;
-    export function describe(matcher: Matcher): Description;
 }
 export = hamjest;
