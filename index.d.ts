@@ -83,21 +83,20 @@ declare namespace hamjest {
         catch(errorCallback: any): Promise;
         finally(finalCallback: any): Promise;
     }
-    export interface Matcher {
+    export class Matcher {
         matches(actual: any): boolean | Promise;
         describeTo(description: Description): void;
         describeMismatch(actual: any, description: Description): void | Promise;
         isMatcher(matcherOrValue: any): boolean;
     }
-    export interface TypeSafeMatcher extends Matcher {
+    export class TypeSafeMatcher extends Matcher {
         isExpectedType(): boolean;
         matchesSafely(): boolean;
         describeMismatchSafely(actual: any, description: Description): void;
     }
-    export interface Description {
-        // TODO compiler failed with these attributes
-        // useJsonForObjects: boolean;
-        // indentation: number;
+    export class Description {
+        useJsonForObjects: boolean;
+        indentation: number;
         append(text: string): Description;
         indented(describingfn: any): any;
         appendDescriptionOf(selfDescribing: any): Description;
