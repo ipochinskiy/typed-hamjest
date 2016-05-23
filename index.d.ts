@@ -84,9 +84,9 @@ declare namespace hamjest {
         finally(finalCallback: any): Promise;
     }
     export interface Matcher {
-        matches(): boolean | Promise;
+        matches(actual: any): boolean | Promise;
         describeTo(description: Description): void;
-        describeMismatch(value: any, description: Description): void | Promise;
+        describeMismatch(actual: any, description: Description): void | Promise;
         isMatcher(matcherOrValue: any): boolean;
     }
     export interface TypeSafeMatcher extends Matcher {
