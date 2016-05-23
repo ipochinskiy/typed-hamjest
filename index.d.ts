@@ -90,8 +90,8 @@ declare namespace hamjest {
         isMatcher(matcherOrValue: any): boolean;
     }
     export class TypeSafeMatcher extends Matcher {
-        isExpectedType(): boolean;
-        matchesSafely(): boolean;
+        isExpectedType(actual: any): boolean;
+        matchesSafely(actual: any): boolean | Promise;
         describeMismatchSafely(actual: any, description: Description): void;
     }
     export class Description {
