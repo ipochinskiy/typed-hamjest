@@ -1,6 +1,7 @@
 export as namespace __;
 
 // asserts
+export function assertThat(reason: string, value: any, matcher: Matcher): void;
 export function assertThat(value: any, matcher: Matcher): void;
 export function promiseThat(value: any, matcher: Matcher): Promise;
 export function fail(value: any): void;
