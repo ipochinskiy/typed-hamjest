@@ -60,7 +60,7 @@ export function hasSize(matcherOrValue: Matcher | number): TypeSafeMatcher;
 export function isEmpty(): TypeSafeMatcher;
 export function empty(): TypeSafeMatcher;
 export function hasProperties(properties: any): Matcher;
-export function hasProperty(name: string, valueOrMatcher: any): Matcher;
+export function hasProperty(name: string, valueOrMatcher?: any): Matcher;
 export function throws(operand?: any): TypeSafeMatcher;
 export function returns(resultMatcherOrValue: any): TypeSafeMatcher;
 export function typedError(errorType: any, messageMatcherOrValue: any): Matcher;
